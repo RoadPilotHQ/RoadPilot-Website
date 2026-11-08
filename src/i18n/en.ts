@@ -216,9 +216,8 @@ export const en = {
     previousVersions: 'Previous versions',
     comingSoonTitle: 'Coming Soon',
     comingSoonText:
-      'No RoadPilot release has been published yet. The first release will be offered here once it is available.',
+      'RoadPilot is still under development and has not been released yet, so there is nothing to download. The first release will be offered here once it is available.',
     noRelease: 'No release yet',
-    checkingRelease: 'Checking for latest release…',
     requirementsTitle: 'System requirements',
     requirements: [
       'Windows 10 or 11, 64-bit',

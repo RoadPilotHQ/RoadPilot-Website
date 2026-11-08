@@ -1,31 +1,16 @@
-import { useEffect, useState } from 'react';
 import { CircleAlert, Download, FileText, History, Hourglass, Package } from 'lucide-react';
 import { ActionLink } from '../components/ActionLink';
 import { GithubIcon } from '../components/GithubIcon';
 import { SectionHeader } from '../components/SectionHeader';
-import { links, site } from '../config/site';
-import { fetchLatestRelease, type Release } from '../data/releases';
+import { links } from '../config/site';
+import { latestRelease } from '../data/releases';
 import { useI18n } from '../i18n';
 import { formatDate, formatMegabytes } from '../lib/format';
 
 export function DownloadSection() {
   const { t, lang } = useI18n();
-  const [release, setRelease] = useState<Release | null>(null);
-  const [checking, setChecking] = useState(true);
-
-  useEffect(() => {
-    let active = true;
-    fetchLatestRelease(site.repository.url).then((latest) => {
-      if (active) {
-        setRelease(latest);
-        setChecking(false);
-      }
-    });
-    return () => {
-      active = false;
-    };
-  }, []);
-
+  // Static data: the website never asks an external service for release information.
+  const release = latestRelease;
   const downloadUrl = release?.downloadUrl ?? null;
   const available = release !== null && downloadUrl !== null;
 
@@ -43,11 +28,7 @@ export function DownloadSection() {
               <div>
                 <p className="download__label">{t.download.latestRelease}</p>
                 <p className="download__version">
-                  {release
-                    ? `RoadPilot ${release.version}`
-                    : checking
-                      ? t.download.checkingRelease
-                      : t.download.noRelease}
+                  {release ? `RoadPilot ${release.version}` : t.download.noRelease}
                 </p>
               </div>
             </div>
@@ -75,7 +56,7 @@ export function DownloadSection() {
               </dl>
             )}
 
-            {!available && !checking && (
+            {!available && (
               <div className="download__soon" role="status">
                 <h3>{t.download.comingSoonTitle}</h3>
                 <p>{t.download.comingSoonText}</p>

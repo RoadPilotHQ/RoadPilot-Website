@@ -1,6 +1,6 @@
 # RoadPilot-Website
 
-Source of the official RoadPilot website: a static site built with React, TypeScript and Vite. No backend, no cookies and no analytics. The only external request is the download section's lookup of the latest GitHub release (see below).
+Source of the official RoadPilot website: a static site built with React, TypeScript and Vite. No backend, no cookies, no analytics and no requests to third-party servers: fonts are system fonts, and all scripts, styles and images are served by the site itself.
 
 > **Status: migrated, content update in progress.** The source was imported as a clean snapshot from the former private website repository. GitHub links now point to the RoadPilotHQ organization and the changelog is removed. The roadmap and other texts still describe an earlier state of the project and are updated in separate steps (roadmap, German version). Nothing is deployed from this repository yet.
 
@@ -60,7 +60,7 @@ The imprint and the privacy policy are real HTML pages (`/imprint/`, `/privacy/`
 ## Links and downloads
 
 - GitHub links come from `src/config/site.ts`: the organization `https://github.com/RoadPilotHQ` and the main repository `https://github.com/RoadPilotHQ/RoadPilot`.
-- There is no published RoadPilot release yet. The download section therefore shows "Coming soon" and no download or release links. It looks up the latest stable GitHub release of the main repository when the page loads and only then shows the installer, its date and size. A release counts only if it is published, is not a draft or prerelease, and contains a file named `RoadPilot_<version>_x64-setup.exe`.
+- There is no published RoadPilot release yet. The download section therefore shows "Coming soon" and no download or release links. It makes **no network request**: the release data is static in `src/data/releases.ts` (`latestRelease`, currently `null`). When a real release exists, add its verified version, date, installer name and size, and download URL there.
 - The changelog has been removed for now.
 
 ## Planned steps
