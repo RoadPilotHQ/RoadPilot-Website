@@ -1,77 +1,74 @@
 # RoadPilot-Website
 
-RoadPilot-Website is the planned source of the official RoadPilot website.
+Source of the official RoadPilot website: a static site built with React, TypeScript and Vite. No backend, no cookies, no analytics and no third-party requests.
 
-> **Status: early planning.** This repository does not contain source code yet. Responsibilities, architecture and roadmap below describe the **planned** scope, not existing functionality.
+> **Status: migrated, content update pending.** The source was imported as a clean snapshot from the former private website repository. The texts, links, roadmap and changelog still describe an earlier state of the project and are being updated in separate, dedicated steps (GitHub links, changelog removal, roadmap, German version). Nothing is deployed from this repository yet.
 
-## Purpose
+## Quick start
 
-This repository is meant to hold the public website that introduces RoadPilot, provides downloads and points visitors to documentation and the community.
+Requires Node.js 20 or newer.
 
-## Key responsibilities
+```powershell
+npm ci
+npm run dev          # http://localhost:5173
+npm run typecheck    # TypeScript only
+npm run lint         # ESLint
+npm run build        # type check + production build into dist/
+npm run preview      # serve dist/ locally
+npm run test:legal   # tests of the legal configuration
+```
 
-- Homepage
-- Downloads
-- Changelog
-- Documentation links
-- Project information
-- Community links
-- Privacy and legal information
+## Legal details (local only)
 
-## Architecture overview
+The imprint and the privacy policy need the operator's name, postal address and contact email. **These are personal data and are never committed.** They are read at build time from an ignored local file:
 
-The following structure is a proposal and may change as development starts:
+1. Copy `config/legal.example.json` to `config/legal.local.json` (ignored by Git through `*.local.json`).
+2. Replace the placeholders with the real details: `name`, `addressLines` (3 to 6 lines: street and number, postal code and city, country) and `email`.
+3. Alternatively set the environment variable `ROADPILOT_LEGAL_CONFIG` to the path of your file.
 
-- **Pages**: homepage, project information, downloads and changelog.
-- **Links**: documentation (RoadPilot-Docs) and community (Discord).
-- **Legal**: privacy policy and legal notice.
-- **Hosting**: the hosting and deployment approach has not been chosen yet.
+Behaviour:
 
-## Integration with the RoadPilot ecosystem
+- `npm run build` **fails with a clear error** if the file is missing, is not valid JSON, contains unknown settings, misses a field, or still contains placeholders (`<...>`, `[[...]]`, `example.invalid`, ...). Placeholder legal information is never published.
+- `npm run dev` does not fail; it shows visibly marked `[[placeholders]]` and prints a warning.
+- The committed example file is rejected by the validator on purpose.
 
-RoadPilot is split into independent repositories. Each one is developed, versioned and released on its own; there is no monorepo and no shared source code.
+Because `npm run build` is part of the pre-commit checks, the file must exist on every machine that commits to this repository.
 
-| Repository | Role |
-|---|---|
-| [RoadPilot](https://github.com/RoadPilotHQ/RoadPilot) | Main desktop application |
-| [RoadPilot-Map](https://github.com/RoadPilotHQ/RoadPilot-Map) | Map processing and geographic data |
-| [RoadPilot-Language](https://github.com/RoadPilotHQ/RoadPilot-Language) | Translations and localization |
-| [RoadPilot-Visualization](https://github.com/RoadPilotHQ/RoadPilot-Visualization) | Visualization components and development tools |
-| [RoadPilot-Plugin](https://github.com/RoadPilotHQ/RoadPilot-Plugin) | Plugin architecture and SDK |
-| **RoadPilot-Website** (this repository) | Official website |
-| [RoadPilot-Discord](https://github.com/RoadPilotHQ/RoadPilot-Discord) | Discord community infrastructure |
-| [RoadPilot-Docs](https://github.com/RoadPilotHQ/RoadPilot-Docs) | Central documentation |
+## Project structure
 
-The website is expected to link to RoadPilot releases, to RoadPilot-Docs for documentation and to the community served by RoadPilot-Discord. It does not share code with other repositories.
+```text
+index.html, imprint/index.html, privacy/index.html   page entries with SEO metadata
+config/legalConfig.mjs                               legal configuration loader and validator
+config/legal.example.json                            template for the local legal details
+public/                                              favicon, robots.txt, sitemap.xml
+src/
+  config/site.ts, config/legal.ts                    site URLs and the injected legal details
+  data/                                              features, roadmap, games, releases
+  i18n/en.ts                                         all visible text (English)
+  components/, sections/, pages/, entries/           UI building blocks and page entries
+  styles/global.css                                  design tokens and all styles
+tests/legalConfig.test.mjs                           tests of the legal configuration
+```
 
-## Development status
+The imprint and the privacy policy are real HTML pages (`/imprint/`, `/privacy/`) built by Vite's multi-page mode, so a static file server needs no SPA rewrite rules.
 
-| Area | Status |
-|---|---|
-| Source code | Not started |
-| Architecture | In planning |
-| Releases | None |
+## Not part of this repository
 
-## Planned roadmap
+- Deployment scripts and server details. Deployment is configured outside the repository.
+- The former browser demo and dashboard screenshots; they showed an outdated application generation.
 
-Planned work, in no fixed order and without dates:
+## Planned steps
 
-- [ ] Choose the site technology and hosting
-- [ ] Design the site structure
-- [ ] Write the homepage and project information
-- [ ] Add the downloads and changelog pages
-- [ ] Add the privacy and legal pages
-- [ ] Set up deployment
+Each of these gets its own change:
 
-## Contributing
-
-RoadPilot is at an early stage and the contribution process is still being defined. Shared guidelines are planned in [RoadPilot-Docs](https://github.com/RoadPilotHQ/RoadPilot-Docs).
-
-Until then, please open an issue before starting any work, so it can be coordinated. All contributions, issues and documentation must be written in English.
+- Update GitHub links to the RoadPilotHQ organization.
+- Remove the changelog for now.
+- Rebuild the roadmap from the actual project status.
+- Add a complete German version under `/de/` (English stays the default language).
 
 ## License
 
-Licensing is currently undecided. No license has been selected for this repository yet. Until a license is published here, no permission is granted to use, copy, modify or distribute its contents beyond what the GitHub Terms of Service allow.
+Licensing is currently undecided. No license has been selected for this repository, and the website content must not be described as open source until one is chosen.
 
 ---
 

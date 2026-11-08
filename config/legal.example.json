@@ -1,0 +1,5 @@
+{
+  "name": "<Full name of the person responsible for the website>",
+  "addressLines": ["<Street and house number>", "<Postal code and city>", "<Country>"],
+  "email": "<contact address>@example.invalid"
+}
