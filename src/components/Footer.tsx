@@ -12,7 +12,6 @@ export function Footer({ isHome }: { isHome: boolean }) {
     ['features', t.nav.features],
     ['roadmap', t.nav.roadmap],
     ['download', t.nav.download],
-    ['changelog', t.nav.changelog],
     ['faq', t.nav.faq],
   ] as const;
 
@@ -49,6 +48,14 @@ export function Footer({ isHome }: { isHome: boolean }) {
                 <span className="site-footer__muted">GitHub · {t.common.comingSoon}</span>
               )}
             </li>
+            {links.organization && (
+              <li>
+                <a href={links.organization} target="_blank" rel="noopener noreferrer">
+                  {t.footer.githubOrganization}
+                  <span className="sr-only"> {t.common.opensInNewTab}</span>
+                </a>
+              </li>
+            )}
             <li>
               <a href={`${base}#community`}>{t.footer.contact}</a>
             </li>

@@ -1195,106 +1195,6 @@ main:focus {
     center / 11px no-repeat;
 }
 
-/* ------------------------------------------------------------ Changelog */
-
-.changelog {
-  display: grid;
-  gap: 20px;
-}
-
-.changelog__entry {
-  padding: clamp(22px, 4vw, 34px);
-}
-
-.changelog__head {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 8px 16px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--border);
-}
-
-.changelog__version {
-  font-size: 1.5rem;
-  font-weight: 740;
-  letter-spacing: -0.02em;
-}
-
-.changelog__version a {
-  color: inherit;
-}
-
-.changelog__date {
-  color: var(--text-2);
-  font-weight: 550;
-}
-
-.changelog__summary {
-  margin-top: 16px;
-  font-size: 1.05rem;
-}
-
-.changelog__groups {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px 32px;
-  margin-top: 24px;
-}
-
-.changelog__group h4 {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.95rem;
-  font-weight: 700;
-}
-
-.changelog__group h4 svg {
-  padding: 3px;
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
-  background: var(--orange-soft);
-  color: var(--orange-strong);
-}
-
-.changelog__group--fixed h4 svg {
-  background: #e3f3e6;
-  color: #17692d;
-}
-
-.changelog__group--limitations h4 svg {
-  background: var(--track);
-  color: var(--text-2);
-}
-
-.changelog__group ul {
-  display: grid;
-  gap: 8px;
-  margin-top: 12px;
-}
-
-.changelog__group li {
-  position: relative;
-  padding-left: 16px;
-  color: var(--text-2);
-  font-size: 0.93rem;
-  line-height: 1.5;
-}
-
-.changelog__group li::before {
-  content: '';
-  position: absolute;
-  left: 2px;
-  top: 0.62em;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--border-strong);
-}
-
 /* ------------------------------------------------------------ FAQ */
 
 .faq {
@@ -1576,8 +1476,7 @@ main:focus {
 .games > *,
 .roadmap > *,
 .download > *,
-.channels > *,
-.changelog__groups > * {
+.channels > * {
   min-width: 0;
 }
 
@@ -1624,7 +1523,6 @@ dd {
 
   .games,
   .feature-grid,
-  .changelog__groups,
   .principles__list {
     grid-template-columns: 1fr;
   }
@@ -1679,18 +1577,3 @@ dd {
   }
 }
 
-.changelog__empty {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 24px 28px;
-  color: var(--text-2);
-  border-style: dashed;
-  border-color: var(--border-strong);
-  box-shadow: none;
-}
-
-.changelog__empty svg {
-  flex: none;
-  color: var(--orange-strong);
-}

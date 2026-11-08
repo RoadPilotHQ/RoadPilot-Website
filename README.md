@@ -1,8 +1,8 @@
 # RoadPilot-Website
 
-Source of the official RoadPilot website: a static site built with React, TypeScript and Vite. No backend, no cookies, no analytics and no third-party requests.
+Source of the official RoadPilot website: a static site built with React, TypeScript and Vite. No backend, no cookies and no analytics. The only external request is the download section's lookup of the latest GitHub release (see below).
 
-> **Status: migrated, content update pending.** The source was imported as a clean snapshot from the former private website repository. The texts, links, roadmap and changelog still describe an earlier state of the project and are being updated in separate, dedicated steps (GitHub links, changelog removal, roadmap, German version). Nothing is deployed from this repository yet.
+> **Status: migrated, content update in progress.** The source was imported as a clean snapshot from the former private website repository. GitHub links now point to the RoadPilotHQ organization and the changelog is removed. The roadmap and other texts still describe an earlier state of the project and are updated in separate steps (roadmap, German version). Nothing is deployed from this repository yet.
 
 ## Quick start
 
@@ -57,12 +57,16 @@ The imprint and the privacy policy are real HTML pages (`/imprint/`, `/privacy/`
 - Deployment scripts and server details. Deployment is configured outside the repository.
 - The former browser demo and dashboard screenshots; they showed an outdated application generation.
 
+## Links and downloads
+
+- GitHub links come from `src/config/site.ts`: the organization `https://github.com/RoadPilotHQ` and the main repository `https://github.com/RoadPilotHQ/RoadPilot`.
+- There is no published RoadPilot release yet. The download section therefore shows "Coming soon" and no download or release links. It looks up the latest stable GitHub release of the main repository when the page loads and only then shows the installer, its date and size. A release counts only if it is published, is not a draft or prerelease, and contains a file named `RoadPilot_<version>_x64-setup.exe`.
+- The changelog has been removed for now.
+
 ## Planned steps
 
 Each of these gets its own change:
 
-- Update GitHub links to the RoadPilotHQ organization.
-- Remove the changelog for now.
 - Rebuild the roadmap from the actual project status.
 - Add a complete German version under `/de/` (English stays the default language).
 

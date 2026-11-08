@@ -7,8 +7,14 @@ import { legal } from './legal';
 export const site = {
   url: 'https://roadpilot.cc',
 
+  /** Official GitHub organization. */
+  organization: {
+    url: 'https://github.com/RoadPilotHQ',
+  },
+
   repository: {
-    url: 'https://github.com/OranjeDev/RoadPilot',
+    /** Main application repository (public, issues and discussions enabled). */
+    url: 'https://github.com/RoadPilotHQ/RoadPilot',
     /** Set to false again if the repository becomes private. */
     isPublic: true,
     discussionsEnabled: true,
@@ -20,15 +26,14 @@ export const site = {
 
 const repo = site.repository;
 const publicRepoUrl = repo.isPublic ? repo.url : null;
+const organizationUrl = repo.isPublic ? site.organization.url : null;
 
 /** External links. A value of null means "not available yet". */
 export const links = {
   github: publicRepoUrl,
+  organization: organizationUrl,
   releases: publicRepoUrl && `${publicRepoUrl}/releases`,
-  latestRelease: publicRepoUrl && `${publicRepoUrl}/releases/latest`,
   releaseTag: (version: string) => publicRepoUrl && `${publicRepoUrl}/releases/tag/v${version}`,
-  releaseAsset: (version: string, asset: string) =>
-    publicRepoUrl && `${publicRepoUrl}/releases/download/v${version}/${asset}`,
   issues: publicRepoUrl && `${publicRepoUrl}/issues`,
   newIssue: publicRepoUrl && `${publicRepoUrl}/issues/new`,
   discussions: publicRepoUrl && repo.discussionsEnabled ? `${publicRepoUrl}/discussions` : null,

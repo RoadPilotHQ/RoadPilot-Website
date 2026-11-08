@@ -1,13 +1,5 @@
 import { legal } from '../config/legal';
 
-interface ChangelogEntry {
-  summary: string;
-  added: string[];
-  improved: string[];
-  fixed: string[];
-  limitations: string[];
-}
-
 /**
  * All visible website texts (the website is English only).
  * Text in [[double brackets]] is a placeholder and is highlighted on the page
@@ -45,7 +37,6 @@ export const en = {
     home: 'Home',
     features: 'Features',
     roadmap: 'Roadmap',
-    changelog: 'Changelog',
     faq: 'FAQ',
     github: 'GitHub',
     download: 'Download',
@@ -211,7 +202,7 @@ export const en = {
   download: {
     eyebrow: 'Download',
     title: 'Get RoadPilot',
-    intro: 'RoadPilot will be distributed through GitHub Releases, with automatic checks for signed updates.',
+    intro: 'RoadPilot has not been released yet. Releases are planned to be published on GitHub.',
     latestRelease: 'Latest release',
     releaseDate: 'Release date',
     releaseStatus: 'Status',
@@ -220,17 +211,14 @@ export const en = {
     platform: 'Platform',
     platformValue: 'Windows 10 / 11, 64-bit',
     downloadButton: 'Download for Windows',
-    githubReleases: 'GitHub Releases',
+    githubRelease: 'GitHub release page',
     releaseNotes: 'Release notes',
     previousVersions: 'Previous versions',
     comingSoonTitle: 'Coming Soon',
     comingSoonText:
-      'RoadPilot has not been released yet. The first release will be available for download here.',
+      'No RoadPilot release has been published yet. The first release will be offered here once it is available.',
     noRelease: 'No release yet',
     checkingRelease: 'Checking for latest release…',
-    upcomingStatus: 'In preparation · not published yet',
-    upcomingText:
-      'RoadPilot {version} is being prepared as the first public demo release. It will be offered here once it is published on GitHub.',
     requirementsTitle: 'System requirements',
     requirements: [
       'Windows 10 or 11, 64-bit',
@@ -239,37 +227,6 @@ export const en = {
       'The game plugin is not part of the installer yet and is built separately',
     ],
     notice: 'RoadPilot is still in development. Requirements may change in future releases.',
-  },
-
-  changelog: {
-    eyebrow: 'Changelog',
-    title: 'Release history',
-    intro: 'Published releases only. Work in progress is covered by the roadmap.',
-    added: 'Added',
-    improved: 'Improvements',
-    fixed: 'Bug fixes',
-    limitations: 'Known limitations',
-    empty: 'No release notes are available yet.',
-    /** Release notes per version, e.g. '1.1.0': { summary, added, improved, fixed, limitations }. */
-    entries: {
-      '0.2.0': {
-        summary: 'The first public demo preview of RoadPilot for Windows.',
-        added: [
-          'Dashboard with vehicle readings, autopilot status, route progress, current delivery and assistance controls.',
-          'Simulated drive with sample speed, engine, fuel, AdBlue, gear and route values.',
-          'Maps page with an illustrative Munich–Salzburg–Linz route and moving demo truck marker.',
-          'Jobs page with a sample active delivery and filterable, sortable contract offers.',
-          'Signed in-app update checks and installation flow for future releases.',
-        ],
-        improved: [],
-        fixed: [],
-        limitations: [
-          'Visual demo only: it does not connect to ETS2 or ATS, read game telemetry or control a vehicle.',
-          'Windows x64 only.',
-          'Version 0.1.0 does not include updater configuration; install 0.2.0 manually once before using in-app updates.',
-        ],
-      },
-    } as Record<string, ChangelogEntry>,
   },
 
   faq: {
@@ -290,7 +247,7 @@ export const en = {
       },
       {
         q: 'How do I install RoadPilot?',
-        a: 'Download the Windows x64 installer from the Download section or the GitHub release page and run it. Version 0.1.0 builds must be updated to 0.2.0 manually before in-app updates are available.',
+        a: 'RoadPilot has not been released yet, so there is no installer to download. Once a release is published, it will be offered in the Download section.',
       },
       {
         q: 'Is RoadPilot open source?',
@@ -339,6 +296,7 @@ export const en = {
       'An independent driving assistance project for Euro Truck Simulator 2 and American Truck Simulator.',
     navigation: 'Navigation',
     project: 'Project',
+    githubOrganization: 'GitHub organization',
     legal: 'Legal',
     contact: 'Contact',
     imprint: 'Imprint',

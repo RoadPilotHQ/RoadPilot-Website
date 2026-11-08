@@ -4,8 +4,8 @@ import { ActionLink } from '../components/ActionLink';
 import { GithubIcon } from '../components/GithubIcon';
 import { SectionHeader } from '../components/SectionHeader';
 import { links, site } from '../config/site';
-import { fetchLatestRelease, plannedRelease, type Release } from '../data/releases';
-import { format, useI18n } from '../i18n';
+import { fetchLatestRelease, type Release } from '../data/releases';
+import { useI18n } from '../i18n';
 import { formatDate, formatMegabytes } from '../lib/format';
 
 export function DownloadSection() {
@@ -27,7 +27,7 @@ export function DownloadSection() {
   }, []);
 
   const downloadUrl = release?.downloadUrl ?? null;
-  const available = downloadUrl !== null;
+  const available = release !== null && downloadUrl !== null;
 
   return (
     <section id="download" className="section section--tinted" aria-labelledby="download-title">
@@ -78,46 +78,37 @@ export function DownloadSection() {
             {!available && !checking && (
               <div className="download__soon" role="status">
                 <h3>{t.download.comingSoonTitle}</h3>
-                {/* A draft release is only reported as a status, never linked. */}
-                {!release && plannedRelease ? (
-                  <>
-                    <p className="download__planned">{t.download.upcomingStatus}</p>
-                    <p>{format(t.download.upcomingText, { version: plannedRelease.version })}</p>
-                  </>
-                ) : (
-                  <p>{t.download.comingSoonText}</p>
-                )}
+                <p>{t.download.comingSoonText}</p>
               </div>
             )}
 
-            <div className="download__actions">
-              <ActionLink href={downloadUrl} size="lg" icon={<Download size={19} aria-hidden="true" />}>
-                {t.download.downloadButton}
-              </ActionLink>
-            </div>
+            {available && (
+              <>
+                <div className="download__actions">
+                  <ActionLink href={downloadUrl} size="lg" icon={<Download size={19} aria-hidden="true" />}>
+                    {t.download.downloadButton}
+                  </ActionLink>
+                </div>
 
-            <ul className="download__links">
-              <li>
-                <ActionLink href={links.latestRelease} variant="ghost" icon={<GithubIcon size={16} />}>
-                  {t.download.githubReleases}
-                </ActionLink>
-              </li>
-              <li>
-                {/* The release notes are always readable in the changelog below. */}
-                <ActionLink
-                  href={release ? (links.releaseTag(release.version) ?? '#changelog') : null}
-                  variant="ghost"
-                  icon={<FileText size={16} aria-hidden="true" />}
-                >
-                  {t.download.releaseNotes}
-                </ActionLink>
-              </li>
-              <li>
-                <ActionLink href={links.releases} variant="ghost" icon={<History size={16} aria-hidden="true" />}>
-                  {t.download.previousVersions}
-                </ActionLink>
-              </li>
-            </ul>
+                <ul className="download__links">
+                  <li>
+                    <ActionLink href={links.releaseTag(release.version)} variant="ghost" icon={<GithubIcon size={16} />}>
+                      {t.download.githubRelease}
+                    </ActionLink>
+                  </li>
+                  <li>
+                    <ActionLink href={links.releaseTag(release.version)} variant="ghost" icon={<FileText size={16} aria-hidden="true" />}>
+                      {t.download.releaseNotes}
+                    </ActionLink>
+                  </li>
+                  <li>
+                    <ActionLink href={links.releases} variant="ghost" icon={<History size={16} aria-hidden="true" />}>
+                      {t.download.previousVersions}
+                    </ActionLink>
+                  </li>
+                </ul>
+              </>
+            )}
           </div>
 
           <aside className="card download__side" aria-labelledby="requirements-title">

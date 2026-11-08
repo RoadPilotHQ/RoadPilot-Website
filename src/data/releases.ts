@@ -11,17 +11,6 @@ export interface Release {
   downloadUrl: string;
 }
 
-/** Releases documented in the website changelog, newest first. */
-export const releases: readonly Release[] = [
-  {
-    version: '0.2.0',
-    date: '2026-10-31',
-    installer: 'RoadPilot_0.2.0_x64-setup.exe',
-    installerSize: 1_915_566,
-    downloadUrl: 'https://github.com/OranjeDev/RoadPilot/releases/download/v0.2.0/RoadPilot_0.2.0_x64-setup.exe',
-  },
-];
-
 interface GitHubRelease {
   tag_name?: unknown;
   draft?: unknown;
@@ -74,5 +63,3 @@ export async function fetchLatestRelease(repositoryUrl: string): Promise<Release
   }
 }
 
-/** Draft release version shown while no published release is available. */
-export const plannedRelease: { version: string } | null = null;

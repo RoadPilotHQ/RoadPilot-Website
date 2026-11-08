@@ -6,7 +6,7 @@ import { useActiveSection } from '../lib/useActiveSection';
 import { GithubIcon } from './GithubIcon';
 import { Logo } from './Logo';
 
-const sectionIds = ['home', 'features', 'roadmap', 'changelog', 'faq'] as const;
+const sectionIds = ['home', 'features', 'roadmap', 'faq'] as const;
 const noSections: readonly string[] = [];
 
 /** On sub-pages, section links point back to the homepage. */
