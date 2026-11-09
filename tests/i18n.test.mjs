@@ -64,6 +64,16 @@ const sameInAllLanguages = new Set([
   'Status', // same word in German and Dutch
   'Navigation', // same word in German
   'Hosting', // same word in German and Dutch
+  'Demo', // same word in German and Dutch
+  'Imperial', // same word in German
+  'N', // neutral gear
+  '—', // value shown when data is missing
+  'km/h',
+  'km',
+  'm',
+  'mph',
+  'mi',
+  'ft',
   'Platform', // same word in Dutch
   'Windows 10 / 11, 64-bit',
   'Is RoadPilot open source?', // same wording in Dutch

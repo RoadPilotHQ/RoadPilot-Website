@@ -8,7 +8,7 @@ import { GithubIcon } from './GithubIcon';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { Logo } from './Logo';
 
-const sectionIds = ['home', 'features', 'roadmap', 'faq'] as const;
+const sectionIds = ['home', 'features', 'demo', 'roadmap', 'faq'] as const;
 const noSections: readonly string[] = [];
 
 /** On sub-pages, section links point back to the homepage. */

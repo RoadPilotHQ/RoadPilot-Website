@@ -1,6 +1,7 @@
 import { Layout } from '../components/Layout';
 import { useDocumentMeta } from '../lib/useDocumentMeta';
 import { Community } from '../sections/Community';
+import { Demo } from '../sections/Demo';
 import { DownloadSection } from '../sections/DownloadSection';
 import { Faq } from '../sections/Faq';
 import { Features } from '../sections/Features';
@@ -16,6 +17,7 @@ export function HomePage() {
       <Hero />
       <Principles />
       <Features />
+      <Demo />
       <Games />
       <Roadmap />
       <DownloadSection />
