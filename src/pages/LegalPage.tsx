@@ -2,6 +2,7 @@ import { ArrowLeft, TriangleAlert } from 'lucide-react';
 import { Layout } from '../components/Layout';
 import { RichText } from '../components/RichText';
 import { useI18n } from '../i18n';
+import { pagePath } from '../i18n/languages';
 import { useDocumentMeta } from '../lib/useDocumentMeta';
 
 export type LegalPageKind = 'imprint' | 'privacy';
@@ -21,17 +22,17 @@ interface LegalContent {
 }
 
 export function LegalPage({ kind }: { kind: LegalPageKind }) {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const content: LegalContent = t.legal[kind];
-  useDocumentMeta(t.meta[`${kind}Title`], t.meta[`${kind}Description`]);
+  useDocumentMeta(kind);
 
   // The "incomplete" notice only appears while the page still has [[placeholders]].
   const hasPlaceholders = JSON.stringify(content).includes('[[');
 
   return (
-    <Layout isHome={false}>
+    <Layout page={kind}>
       <article className="legal container container--narrow" aria-labelledby="legal-title">
-        <a className="legal__back" href="/">
+        <a className="legal__back" href={pagePath(lang, 'home')}>
           <ArrowLeft size={16} aria-hidden="true" />
           {t.common.backToHome}
         </a>

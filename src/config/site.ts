@@ -1,3 +1,4 @@
+import { siteOrigin } from '../i18n/languages';
 import { legal } from './legal';
 
 /**
@@ -5,7 +6,7 @@ import { legal } from './legal';
  * from here, so nothing has to be changed inside components.
  */
 export const site = {
-  url: 'https://roadpilot.cc',
+  url: siteOrigin,
 
   /** Official GitHub organization. */
   organization: {

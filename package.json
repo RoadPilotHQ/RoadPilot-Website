@@ -9,7 +9,9 @@
     "typecheck": "tsc -b",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test:legal": "node --test tests/legalConfig.test.mjs"
+    "test:legal": "node --test tests/legalConfig.test.mjs",
+    "test:i18n": "node --test tests/i18n.test.mjs",
+    "test": "node --test tests/legalConfig.test.mjs tests/i18n.test.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.460.0",

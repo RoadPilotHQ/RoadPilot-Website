@@ -510,6 +510,40 @@ main:focus {
   gap: 14px;
 }
 
+/* Language selector: three real links, the current one is highlighted. */
+.lang-switch {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--border-strong);
+  border-radius: 11px;
+  background: var(--panel);
+}
+
+.lang-switch__link {
+  display: inline-grid;
+  place-items: center;
+  min-width: 40px;
+  min-height: 34px;
+  padding: 0 8px;
+  border-radius: 8px;
+  color: var(--text-2);
+  font-size: 0.82rem;
+  font-weight: 650;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+}
+
+.lang-switch__link:hover {
+  background: var(--orange-soft);
+  color: var(--orange-ink);
+}
+
+.lang-switch__link[aria-current='true'] {
+  background: var(--charcoal);
+  color: #fff;
+}
+
 @media (max-width: 1020px) {
   .site-header__inner {
     justify-content: space-between;
@@ -936,128 +970,29 @@ main:focus {
   font-weight: 550;
 }
 
-/* ------------------------------------------------------------ Roadmap */
+/* ------------------------------------------------------------ Roadmap placeholder */
 
-.roadmap {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  align-items: start;
-}
-
-.roadmap__lane {
-  padding: 22px;
-  border-radius: var(--radius);
-  background: var(--panel-2);
-  border: 1px solid var(--border);
-}
-
-.roadmap__heading {
+.roadmap-placeholder {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  padding-bottom: 16px;
-  font-size: 1.08rem;
-  font-weight: 700;
-}
-
-.roadmap__lane--completed .roadmap__heading svg {
-  color: #17692d;
-}
-
-.roadmap__lane--inProgress .roadmap__heading svg {
-  color: var(--orange-strong);
-}
-
-.roadmap__lane--planned .roadmap__heading svg {
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px 28px;
   color: var(--text-2);
-}
-
-.roadmap__count {
-  margin-left: auto;
-  min-width: 26px;
-  padding: 1px 8px;
-  border-radius: 99px;
-  background: var(--panel);
-  border: 1px solid var(--border);
-  color: var(--text-2);
-  font-family: var(--font);
-  font-size: 0.8rem;
-  text-align: center;
-}
-
-.roadmap__list {
-  position: relative;
-  display: grid;
-  gap: 12px;
-  padding-left: 22px;
-}
-
-.roadmap__list::before {
-  /* dashed "road" line linking the items */
-  content: '';
-  position: absolute;
-  left: 5px;
-  top: 8px;
-  bottom: 8px;
-  width: 2px;
-  background: repeating-linear-gradient(to bottom, var(--border-strong) 0 8px, transparent 8px 14px);
-}
-
-.roadmap__item {
-  position: relative;
-  padding: 16px 18px;
-  border-radius: 12px;
-  background: var(--panel);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
-}
-
-.roadmap__item::before {
-  content: '';
-  position: absolute;
-  left: -22px;
-  top: 21px;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--panel);
-  border: 2px solid var(--border-strong);
-}
-
-.roadmap__lane--completed .roadmap__item::before {
-  background: #2c9b4b;
-  border-color: #2c9b4b;
-}
-
-.roadmap__lane--inProgress .roadmap__item::before {
-  background: var(--orange);
-  border-color: var(--orange);
-  box-shadow: 0 0 0 4px var(--orange-soft);
-}
-
-.roadmap__lane--inProgress .roadmap__item--demoPreview::before {
-  background: #2c9b4b;
-  border-color: #2c9b4b;
-  box-shadow: 0 0 0 4px rgb(44 155 75 / 14%);
-}
-
-.roadmap__lane--planned .roadmap__item {
-  background: transparent;
   border-style: dashed;
+  border-color: var(--border-strong);
   box-shadow: none;
 }
 
-.roadmap__title {
-  font-size: 1rem;
-  font-weight: 680;
+.roadmap-placeholder svg {
+  flex: none;
+  margin-top: 2px;
+  color: var(--orange-strong);
 }
 
-.roadmap__text {
-  margin-top: 4px;
-  color: var(--text-2);
-  font-size: 0.92rem;
-  line-height: 1.5;
+.roadmap-placeholder__title {
+  margin-bottom: 4px;
+  color: var(--text);
+  font-size: 1.05rem;
 }
 
 /* ------------------------------------------------------------ Download */
@@ -1474,7 +1409,6 @@ main:focus {
 /* Grid children may shrink below their longest word (long German compounds). */
 .feature-grid > *,
 .games > *,
-.roadmap > *,
 .download > *,
 .channels > * {
   min-width: 0;
@@ -1502,7 +1436,6 @@ dd {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .roadmap,
   .download {
     grid-template-columns: 1fr;
   }

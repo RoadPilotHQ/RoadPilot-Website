@@ -1,21 +1,12 @@
 import { legal } from '../config/legal';
 
 /**
- * All visible website texts (the website is English only).
+ * All visible website texts in English, the default language. de.ts and nl.ts must have exactly
+ * the same structure (enforced by the Messages type).
  * Text in [[double brackets]] is a placeholder and is highlighted on the page
  * until it is replaced with confirmed information.
  */
 export const en = {
-  meta: {
-    homeTitle: 'RoadPilot – Driving assistance for ETS2 and ATS',
-    homeDescription:
-      'RoadPilot is a free, independent driving assistance project for Euro Truck Simulator 2 and American Truck Simulator, with a native Windows desktop app.',
-    imprintTitle: 'Imprint | RoadPilot',
-    imprintDescription: 'Legal information and website operator details for RoadPilot.',
-    privacyTitle: 'Privacy Policy – RoadPilot',
-    privacyDescription: 'Privacy policy of the RoadPilot website.',
-  },
-
   common: {
     skipToContent: 'Skip to content',
     comingSoon: 'Coming soon',
@@ -39,6 +30,7 @@ export const en = {
     roadmap: 'Roadmap',
     faq: 'FAQ',
     github: 'GitHub',
+    language: 'Language',
     download: 'Download',
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
@@ -153,50 +145,10 @@ export const en = {
   roadmap: {
     eyebrow: 'Roadmap',
     title: 'Development roadmap',
-    intro: 'Where RoadPilot stands. There are no fixed dates: features ship when they are safe and tested.',
-    stages: {
-      completed: 'Completed',
-      inProgress: 'In Progress',
-      planned: 'Planned',
-    },
-    items: {
-      demoPreview: { title: 'Demo Preview', text: 'Dashboard with live data and a clearly labelled demo mode.' },
-      safety: { title: 'Safety logic', text: 'Autopilot state machine, telemetry validation and diagnostics log.' },
-      atsIntegration: {
-        title: 'ATS integration',
-        text: 'Game plugin and virtual input device verified in ATS 1.61, with a guided control test.',
-      },
-      speedAssistant: { title: 'Speed assistant', text: 'Speed limit and cruise control through throttle and brake.' },
-      mapData: { title: 'Map data', text: 'Lane-level road network read from the ATS game archives.' },
-      steeringCalibration: {
-        title: 'Steering calibration',
-        text: 'Steering response of the game measured from recorded drives and modelled.',
-      },
-      overlay: { title: 'In-game overlay', text: 'Start and stop the autopilot from above the game with a hotkey.' },
-      laneKeeping: {
-        title: 'Lane keeping assistance',
-        text: 'Driven in ATS on motorways and country roads. Being refined before it is released.',
-      },
-      routeForks: {
-        title: 'Following the route at forks',
-        text: 'Using the game’s navigation route so lane keeping knows which branch to take.',
-      },
-      driverOverride: {
-        title: 'Driver override',
-        text: 'Disengage automatically when the driver brakes or steers.',
-      },
-      ets2Integration: {
-        title: 'ETS2 integration',
-        text: 'Verify the plugin in Euro Truck Simulator 2 and add ETS2 map data.',
-      },
-      junctions: { title: 'Junction turns', text: 'Steering through junction turns, which is still left to the driver.' },
-      routePlanning: { title: 'Route planning', text: 'Road graph, route search and upcoming manoeuvres.' },
-      distanceKeeping: { title: 'Distance keeping', text: 'Detect traffic ahead and extend the speed assistant.' },
-      qualityOfLife: {
-        title: 'Quality of life',
-        text: 'Persistent settings and the game plugin bundled with the installer.',
-      },
-    },
+    intro: 'The roadmap is being rebuilt from the verified status of the RoadPilot repositories.',
+    placeholderTitle: 'Roadmap in progress',
+    placeholderText:
+      'Until the new roadmap is published, no feature status is shown here. There are no fixed dates: features are released when they are safe and tested.',
   },
 
   download: {
@@ -371,3 +323,5 @@ export const en = {
     },
   },
 };
+
+export type Messages = typeof en;

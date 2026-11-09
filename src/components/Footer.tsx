@@ -1,11 +1,12 @@
 import { links } from '../config/site';
 import { format, useI18n } from '../i18n';
+import { pagePath, type PageKey } from '../i18n/languages';
 import { Logo } from './Logo';
 import { RichText } from './RichText';
 
-export function Footer({ isHome }: { isHome: boolean }) {
-  const { t } = useI18n();
-  const base = isHome ? '' : '/';
+export function Footer({ page }: { page: PageKey }) {
+  const { t, lang } = useI18n();
+  const base = page === 'home' ? '' : pagePath(lang, 'home');
   const year = new Date().getFullYear();
 
   const navItems = [
@@ -75,10 +76,10 @@ export function Footer({ isHome }: { isHome: boolean }) {
           <h2 className="site-footer__heading">{t.footer.legal}</h2>
           <ul>
             <li>
-              <a href="/imprint/">{t.footer.imprint}</a>
+              <a href={pagePath(lang, 'imprint')}>{t.footer.imprint}</a>
             </li>
             <li>
-              <a href="/privacy/">{t.footer.privacy}</a>
+              <a href={pagePath(lang, 'privacy')}>{t.footer.privacy}</a>
             </li>
           </ul>
         </div>

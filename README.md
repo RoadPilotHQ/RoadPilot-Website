@@ -68,7 +68,7 @@ The imprint and the privacy policy are real HTML pages (`/imprint/`, `/privacy/`
 Each of these gets its own change:
 
 - Rebuild the roadmap from the actual project status.
-- Add a complete German version under `/de/` (English stays the default language).
+- Languages: English (default, at `/`), German (`/de/`) and Dutch (`/nl/`). Texts live in `src/i18n/`, page paths and metadata in `src/i18n/languages.ts` and `src/i18n/meta.ts`. `npm test` checks that all languages have the same structure and are translated.
 
 ## License
 

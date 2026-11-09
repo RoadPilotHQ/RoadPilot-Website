@@ -2,20 +2,24 @@ import { Download, Menu, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { links } from '../config/site';
 import { useI18n } from '../i18n';
+import { pagePath, type PageKey } from '../i18n/languages';
 import { useActiveSection } from '../lib/useActiveSection';
 import { GithubIcon } from './GithubIcon';
+import { LanguageSwitcher } from './LanguageSwitcher';
 import { Logo } from './Logo';
 
 const sectionIds = ['home', 'features', 'roadmap', 'faq'] as const;
 const noSections: readonly string[] = [];
 
 /** On sub-pages, section links point back to the homepage. */
-export function Header({ isHome }: { isHome: boolean }) {
-  const { t } = useI18n();
+export function Header({ page }: { page: PageKey }) {
+  const { t, lang } = useI18n();
+  const isHome = page === 'home';
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const active = useActiveSection(isHome ? sectionIds : noSections);
-  const base = isHome ? '' : '/';
+  const homePath = pagePath(lang, 'home');
+  const base = isHome ? '' : homePath;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -38,7 +42,7 @@ export function Header({ isHome }: { isHome: boolean }) {
   return (
     <header className={`site-header${scrolled ? ' site-header--scrolled' : ''}${open ? ' site-header--open' : ''}`}>
       <div className="container site-header__inner">
-        <a className="site-header__brand" href={isHome ? '#home' : '/'} onClick={close}>
+        <a className="site-header__brand" href={isHome ? '#home' : homePath} onClick={close}>
           <Logo size={32} />
           <span className="sr-only">{t.nav.home}</span>
         </a>
@@ -89,6 +93,7 @@ export function Header({ isHome }: { isHome: boolean }) {
             </li>
           </ul>
           <div className="site-nav__actions">
+            <LanguageSwitcher page={page} onNavigate={close} />
             <a className="btn btn--primary btn--md" href={`${base}#download`} onClick={close}>
               <Download size={17} aria-hidden="true" />
               <span>{t.nav.download}</span>

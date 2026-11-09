@@ -1,12 +1,27 @@
-import { en } from './en';
+import { de } from './de';
+import { en, type Messages } from './en';
+import { defaultLanguage, isLanguage, type Language } from './languages';
+import { nl } from './nl';
 
-/** The website is English only. Texts stay in en.ts, separate from components. */
-export type Language = 'en';
+export type { Language } from './languages';
+export type { Messages } from './en';
 
-const value = { lang: 'en' as Language, t: en };
+const messages: Record<Language, Messages> = { en, de, nl };
+
+/** Every page is a separate HTML file whose <html lang> names its language. */
+function detectLanguage(): Language {
+  const lang = document.documentElement.lang;
+  return isLanguage(lang) ? lang : defaultLanguage;
+}
+
+let current: { lang: Language; t: Messages } | null = null;
 
 export function useI18n() {
-  return value;
+  if (!current) {
+    const lang = detectLanguage();
+    current = { lang, t: messages[lang] };
+  }
+  return current;
 }
 
 /** Replaces {name} tokens, e.g. format('© {year} RoadPilot', { year: 2026 }). */

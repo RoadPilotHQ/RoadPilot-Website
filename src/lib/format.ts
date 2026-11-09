@@ -1,6 +1,6 @@
 import type { Language } from '../i18n';
 
-const locales: Record<Language, string> = { en: 'en-GB' };
+const locales: Record<Language, string> = { en: 'en-GB', de: 'de-DE', nl: 'nl-NL' };
 
 export function formatDate(iso: string, lang: Language): string {
   // Parse as a calendar date, independent of the visitor's time zone.

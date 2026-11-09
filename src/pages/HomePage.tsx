@@ -1,5 +1,4 @@
 import { Layout } from '../components/Layout';
-import { useI18n } from '../i18n';
 import { useDocumentMeta } from '../lib/useDocumentMeta';
 import { Community } from '../sections/Community';
 import { DownloadSection } from '../sections/DownloadSection';
@@ -11,10 +10,9 @@ import { Principles } from '../sections/Principles';
 import { Roadmap } from '../sections/Roadmap';
 
 export function HomePage() {
-  const { t } = useI18n();
-  useDocumentMeta(t.meta.homeTitle, t.meta.homeDescription);
+  useDocumentMeta('home');
   return (
-    <Layout isHome>
+    <Layout page="home">
       <Hero />
       <Principles />
       <Features />
