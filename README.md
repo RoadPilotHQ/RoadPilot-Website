@@ -68,6 +68,7 @@ The imprint and the privacy policy are real HTML pages (`/imprint/`, `/privacy/`
 Each of these gets its own change:
 
 - Rebuild the roadmap from the actual project status.
+- Interactive demo: the Demo section (`src/sections/Demo.tsx`) runs a simulation from `src/lib/demoSim.ts` in the browser. All values are simulated and labelled as demo data; nothing is sent anywhere. `npm run test:demo` covers the simulation.
 - Languages: English (default, at `/`), German (`/de/`) and Dutch (`/nl/`). Texts live in `src/i18n/`, page paths and metadata in `src/i18n/languages.ts` and `src/i18n/meta.ts`. `npm test` checks that all languages have the same structure and are translated.
 
 ## License
