@@ -67,7 +67,7 @@ export function Demo() {
   const fault = state.mode === 'fault';
   const u = d.units[units];
   const speed = fault ? d.unknown : `${speedIn(units, state.speed)} ${u.speed}`;
-  const limit = `${speedIn(units, state.limit)} ${u.speed}`;
+  const limit = fault ? d.unknown : `${speedIn(units, state.limit)} ${u.speed}`;
   const gear = fault ? d.unknown : state.speed < 1 ? d.neutral : String(gearAt(state.speed));
   const offsetValue = units === 'metric' ? state.offset : state.offset * FT_PER_M;
   const offset = fault ? d.unknown : `${offsetValue >= 0 ? '+' : '−'}${Math.abs(offsetValue).toFixed(2)} ${u.offset}`;
@@ -109,7 +109,7 @@ export function Demo() {
             </div>
             <div className="demo__stat">
               <dt>{d.limit}</dt>
-              <dd>{limit}</dd>
+              <dd className={fault ? 'demo__missing' : undefined}>{limit}</dd>
             </div>
             <div className="demo__stat">
               <dt>{d.gear}</dt>

@@ -1573,6 +1573,17 @@ dd {
   grid-column: span 2;
 }
 
+/* Six tiles fit in one row on wide screens; the speed tile is twice as wide. */
+@media (min-width: 1000px) {
+  .demo__stats {
+    grid-template-columns: 2fr repeat(5, 1fr);
+  }
+
+  .demo__stat--main {
+    grid-column: auto;
+  }
+}
+
 .demo__stat dt {
   font-size: 0.8rem;
   color: var(--text-3);
